@@ -1,0 +1,30 @@
+<form action="conversormonedas.php" method="post">
+    
+ Elija moneda de origen:
+  <select name="moneda">
+  <option value="euro" selected>Euro</option>
+  <option value="usdolar">Dolar US</option>
+  <option value="libra">Libra</option>
+  <option value="rublo">Rublo</option>
+  <option value="yen">Yen</option>
+  <option value="yuan">Yuan</option>
+  </select>
+ 
+ <br><br>
+ 
+ Elija cantidad: <input type="text" name="cantidad">
+ 
+ <br><br>
+ 
+ Elija monedas a las que desea convertir:<br>
+  <input type="checkbox" name="monedasdestino[]" value="euro"> Euro
+  <input type="checkbox" name="monedasdestino[]" value="usdolar"> Dolar US
+  <input type="checkbox" name="monedasdestino[]" value="libra"> Libra
+  <input type="checkbox" name="monedasdestino[]" value="rublo"> Rublo
+  <input type="checkbox" name="monedasdestino[]" value="yen"> Yen
+  <input type="checkbox" name="monedasdestino[]" value="yuan"> Yuan
+  
+  <br><br>
+  
+  <input type="submit">
+</form>

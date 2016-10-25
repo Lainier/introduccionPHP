@@ -1,0 +1,37 @@
+do_system_update(){
+        SOURCE_DIR="$1"
+        TIMESTAMP="$(date "+%F_%H:%M")"
+        BACKUP_DIR="/BACKUP/$TIMESTAMP"
+        echo "======================================================"
+        echo "Update from local repository to system: REPO => SYSTEM"
+        do_list_files "$SOURCE_DIR"
+        if [ "$DO_BACKUP" = "Y" ] ; then
+                CMD="rsync -av -b --backup-dir=$BACKUP_DIR $SOURCE_DIR /"
+                echo "Backup directory: $BACKUP_DIR"
+        else
+                CMD="rsync -av $SOURCE_DIR /"
+                echo "No backup current files"
+        fi
+        echo "======================================================"
+        echo "Command to execute: $CMD"
+        echo "======================================================"
+        echo "**May the Force be with you**"
+        echo ""
+if [ "$FORCE_UPDATE" != "Y" ] ; then
+                echo "Proceed (y/n)?:"
+                read a
+                if [ "$a" != "y" ] ; then
+                        die "ABORTED!!!! Maybe next time, folk ;-)"
+                fi
+        fi
+        if $CMD ; then
+                echo "Update successfully."
+                if [ "$DO_BACKUP" = "Y" ] ; then
+                        echo "Directory "$BACKUP_DIR" contains a backup of updated files"
+                fi
+        else
+                die "Some ERRORS appeared!!!!"
+        fi 
+}
+
+
