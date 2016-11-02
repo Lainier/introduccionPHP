@@ -3,6 +3,7 @@ $documentoid = $_POST["documentoid"];
 $cambios=array(0=>'T',1=>'R',2=>'W',3=>'A',4=>'G',5=>'M',6=>'Y',7=>'F',8=>'P',9=>'D',10=>'X',11=>'B',12=>'N',13=>'J',14=>'Z',15=>'S',16=>'Q',17=>'V',18=>'H',19=>'L',20=>'C',21=>'K',22=>'E');
 
 function nif($documento,$cambio) {
+    
 for ($i=0;$i<8;$i++) {
 $numero=$numero.$documento[$i];
 }
@@ -11,10 +12,10 @@ $resto = $numero % 23;
 $letra = $cambio[$resto];
 
 if ($documento[8]==$letra) {
-echo "NIF correcto.";
+echo "El documento es un NIF válido.";
 }
 else {
- echo "NIF incorrecto. La letra del DNI debe ser $letra";
+ echo "El documento no es un NIF o NIE válido.";
 }
 }
 
@@ -40,10 +41,10 @@ $resto = $numero % 23;
 $letra = $cambio[$resto];
 
 if ($documento[9]==$letra) {
-echo "El documento es un NIE.";
+echo "El documento es un NIE válido.";
 }
 else {
- echo "El documento no es un NIE válido.";
+ echo "El documento no es un NIF o NIE válido.";
 }
 }
 

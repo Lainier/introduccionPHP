@@ -1,0 +1,41 @@
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>    
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>  
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js"></script>  
+</head>
+
+<form method="post" action="leerFicha.php" novalidate>
+<label for="cnif">NIF (opcional)</label>
+<input id="cnif"  name="nif" type="text"><br>
+<input type="submit">
+<input type="reset">
+</form>
+
+<script>
+    
+    function esNIF(value, element) {
+                var referencia = 'TRWAGMYFPDXBNJZSQVHLCKE';
+                var letra = value.substring(value.length - 1);
+                var numero = parseInt(value.substring(0, value.length - 1));
+                if (referencia.charAt(numero % 23) === letra) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+jQuery.validator.addMethod("esnif", esNIF, "No es un NIF válido");
+
+$(".selector").validate({
+                submitHandler: function (form) {
+                  form.submit();
+                }
+            });
+
+rules: {
+     nif: {
+         esnif: true;
+          }
+      }
+
+</script>
