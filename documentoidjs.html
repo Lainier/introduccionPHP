@@ -4,9 +4,9 @@
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/localization/messages_es.js"></script>  
 </head>
 
-<form method="post" action="leerFicha.php" novalidate>
+<form method="post" id="selector" action="leerFicha.php" novalidate>
 <label for="cnif">NIF (opcional)</label>
-<input id="cnif"  name="nif" type="text"><br>
+<input id="cnif" name="nif"><br>
 <input type="submit">
 <input type="reset">
 </form>
@@ -26,16 +26,17 @@
 
 jQuery.validator.addMethod("esnif", esNIF, "No es un NIF válido");
 
-$(".selector").validate({
+$("#selector").validate({
+                
                 submitHandler: function (form) {
                   form.submit();
+                },
+                
+                 rules: {
+                 nif: {
+                 esnif: true
+                 }
                 }
             });
-
-rules: {
-     nif: {
-         esnif: true;
-          }
-      }
 
 </script>
