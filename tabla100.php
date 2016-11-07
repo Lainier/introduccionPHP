@@ -1,61 +1,24 @@
 <?php
 
-echo "<table border=1>";
+$linea=1;
+$fila="<tr bgcolor=";
+$color1="#ffffff>";
+$color2="#aaff80>";
 
-echo "<tr>";
-for ($i=1;$i<11;$i++) {
-echo "<td>";
-echo $i;
-echo "</td>";    
+echo "Tabla de 100 números, de 10 en 10<br/>";
+echo "<table border=".'1'.">";
+echo "$fila.$color1";
+for ($i = 1; $i <= 100; $i++) {
+        echo "<td>$i </td>";
+        if ($i % 10 == 0){
+            echo "</tr>";
+            if ($linea%2==0){
+                echo "$fila.$color2";
+            } else {
+                echo "$fila.$color1";
+            };
+            $linea++;
+        }
+        
 }
-echo "</tr>";
-echo "<tr>";
-for ($i=11;$i<21;$i++) {
-echo "<td>";
-echo $i;
-echo "</td>";    
-}
-echo "</tr>";
-echo "<tr>";
-for ($i=21;$i<31;$i++) {
-echo "<td>";
-echo $i;
-echo "</td>";    
-}
-echo "</tr>";
-echo "<tr>";
-for ($i=31;$i<41;$i++) {
-echo "<td>";
-echo $i;
-echo "</td>";  
-}
-echo "</tr>";
-echo "<tr>";
-for ($i=51;$i<61;$i++) {
-echo "<td>";
-echo $i;
-echo "</td>"; 
-}
-echo "</tr>";
-echo "<tr>";
-for ($i=61;$i<71;$i++) {
-echo "<td>";
-echo $i;
-echo "</td>";  
-}
-echo "</tr>";
-echo "<tr>";
-for ($i=81;$i<91;$i++) {
-echo "<td>";
-echo $i;
-echo "</td>";      
-}
-echo "</tr>";
-echo "<tr>";
-for ($i=91;$i<101;$i++) {
-echo "<td>";
-echo $i;
-echo "</td>";      
-}
-echo "</tr>";
 echo "</table>";
