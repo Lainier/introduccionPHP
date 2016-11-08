@@ -1,24 +1,20 @@
 <?php
-$euros = $_POST["euros"];
-$cambios=array(0=>'500',1=>'200',2=>'100',3=>'50',5=>'20',6=>'10',7=>'5',8=>'1',9=>'0.5',10=>'0.2',11=>'0.1');
+$euros = $_POST["euros"]*100;
+$cambios=array(500,200,100,50,20,10,5,1,0.5,0.2,0.1,0.05,0.02,0.01);
 $i=0;
 
-echo "$euros se divide en2: ";
+echo $euros/100, " euros se divide en: ";
 $resultado=intdiv($euros,$cambios[$i]);
- echo "Resultado es: ";
- echo "Resultado es: $resultado .";
  
  while ($euros>0) {
-    $resultado=intdiv($euros,$cambios[$i]);
-    echo "Resultado es: $resultado .";
-    $euros=$euros-($resultado*$cambios[$i]);
-    echo "$euros restantes .";
-    $i++;
-     if ($cambios[$i]>=1) {
+    $resultado=intdiv($euros,$cambios[$i]*100);
+    $euros=$euros-($resultado*$cambios[$i]*100);
+    if ($cambios[$i]>=1) {
          echo "$resultado billetes de $cambios[$i] euros, ";
      }
      else {
           echo "$resultado monedas de $cambios[$i] euros, ";
      }
+     $i++;
 }
     

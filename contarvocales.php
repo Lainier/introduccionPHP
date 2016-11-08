@@ -18,6 +18,6 @@ for ($i=0; $i<strlen($frase); $i++) {
   }
 }
 
-echo "El numero de vocales es ".$contador;
+echo "El numero de vocales es $contador";
 
 
