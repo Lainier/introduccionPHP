@@ -1,38 +1,38 @@
 <?php
 
 class Fibonacci {
-    var $sucesion=[];
+    var $serie=[];
     
     function __construct($num) {
         if ($num > 0) {
-            $this->sucesion[] = 0;
+            $this->serie[] = 0;
             $a1 = 0;
         }
         if ($num > 1) {
-            $this->sucesion[] = 1;
+            $this->serie[] = 1;
             $a2 = 1;
         }
         for ($i = 3; $i <= $num; $i++) {
             $nuevo = $a1 + $a2;
-            $this->sucesion[] = $nuevo;
+            $this->serie[] = $nuevo;
             $a1 = $a2;
             $a2 = $nuevo;
         }
     }
     
     function getLimite(){
-        return count($this->sucesion);
+        return count($this->serie);
     }
     
     function getSerie(){
-        return $this->sucesion;
+        return $this->serie;
     }
     
     function inSerie($num){
         $esta = FALSE;
         $i=0;
-        while (! $esta AND $i<count($this->sucesion) AND $this->sucesion[$i]<=$num){
-            if ($num == $this->sucesion[$i]){
+        while (! $esta AND $i<count($this->serie) AND $this->serie[$i]<=$num){
+            if ($num == $this->serie[$i]){
                 $esta = TRUE;
             }
             $i++;
@@ -41,6 +41,10 @@ class Fibonacci {
     }
     
     function getElemento($num){
-        return $this->sucesion[$num-1];
+        return $this->serie[$num-1];
+    }
+    
+    function getAureo(){
+        return $this->serie[$this->getLimite()-1]/$this->serie[$this->getLimite()-2];
     }
 }
